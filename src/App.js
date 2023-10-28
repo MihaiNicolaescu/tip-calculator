@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Bill from './components/bill';
+import Tips from './components/tips';
+import Total from './components/total';
 
 function App() {
+
+  const [bill, setBill] = useState(0);
+  const [tipsHost, setTipsHost] = useState(10);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App flex items-center justify-center h-screen">
+      <div className='flex flex-col items-center justify-center'>
+          <Bill bill={bill} setBill={setBill}/>
+          <Tips tips={tipsHost} setTips={setTipsHost} text={"Tips host"} />
+          <Total bill={bill} tips={tipsHost}/>
+      </div>
     </div>
   );
 }
